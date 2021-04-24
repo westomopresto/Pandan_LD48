@@ -11,6 +11,8 @@ public class Creature : MonoBehaviour
     public Vector2 input;
 
     // physics
+    public LayerMask floorMasks;
+    public Transform camPivot;
     Vector3 intent;
     Vector3 velocity;
     Vector3 velocityXZ;
@@ -45,23 +47,37 @@ public class Creature : MonoBehaviour
         DoMove();
         DoJump();
         mover.Move(velocity * Time.deltaTime);
+        CalculateCamera();
 
-        animator.SetBool("grounded", grounded);
+        //animator.SetBool("grounded", grounded);
         var vMag = velocityXZ.magnitude;
         vMag = Mathf.Clamp(vMag, 0.0f, 10.0f);
-        animator.SetFloat("walkSpeed", vMag);
+        //animator.SetFloat("walkSpeed", vMag);
+        Vector3 pos = transform.position;
+        pos.z = 0;
+        transform.position = pos;
+    }
+
+    private Vector3 camF;
+    private Vector3 camR;
+    void CalculateCamera()
+    {
+        camF = camPivot.forward;
+        camR = camPivot.right;
+
+        camF.y = 0;
+        camR.y = 0;
+        camF = camF.normalized;
+        camR = camR.normalized;
     }
 
     void CalculateGround()
     {
         RaycastHit hit;
-        int layerMask = 1 << 8;
-        layerMask ^= (1 << 11);
-        layerMask = ~layerMask; // inverts the bitmask
         //if (Physics.Raycast(transform.position + Vector3.up * 0.1f, -Vector3.up, out hit, 0.4f))
         DebugExtension.DebugWireSphere(transform.position + Vector3.up - new Vector3(0, 1.0f, 0), new Color(0.0f, 1.0f, 0.0f), 0.34f);
 
-        if (Physics.SphereCast(transform.position + Vector3.up, 0.34f, -Vector3.up, out hit, 1.0f, layerMask, QueryTriggerInteraction.UseGlobal))
+        if (Physics.SphereCast(transform.position + Vector3.up, 0.34f, -Vector3.up, out hit, 1.0f, floorMasks, QueryTriggerInteraction.UseGlobal))
         {
             grounded = true;
         }
@@ -73,7 +89,7 @@ public class Creature : MonoBehaviour
 
     void DoMove()
     {
-        intent = Vector3.forward * input.x;
+        intent = camF * input.y + camR * input.x;
 
         float tS = velocity.magnitude/moveSpeed;
         turnSpeed = Mathf.Lerp(turnSpeedHigh, turnSpeedLow, tS);
@@ -102,7 +118,9 @@ public class Creature : MonoBehaviour
         }
             velocity.y -= gravity * Time.deltaTime;
         if (grounded)
+        {
             velocity.y = Mathf.Clamp(velocity.y, -4, 999);
+        }
     }
 
     private float CalcJumpSpeed(float jumpHeight, float gravity)
@@ -113,7 +131,7 @@ public class Creature : MonoBehaviour
     void Jump()
     {
         velocity.y = CalcJumpSpeed(jumpPwr, gravity);
-        animator.SetTrigger("jump");
+        //animator.SetTrigger("jump");
     }
 
     void DoJump()
