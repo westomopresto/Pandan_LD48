@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Char xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <name>Denoise</name>
+  <texts>
+    <text>The name is Denoise.</text>
+    <text>I'm the village psychic.</text>
+  </texts>
+</Char>
