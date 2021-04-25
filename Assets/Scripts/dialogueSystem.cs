@@ -12,6 +12,8 @@ public class dialogueSystem : MonoBehaviour
     public string[] pages;
     public string characterName;
 
+    public TextAsset startingText;
+
     public delegate void dialogAction();
     public static event dialogAction onDialogEndEvent;
     public static event dialogAction onDialogStartEvent;
@@ -19,7 +21,7 @@ public class dialogueSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        loadDialog("assets/XML/denoise.xml");
+        loadDialog(startingText);
         dialogueStart();
     }
 
@@ -42,7 +44,7 @@ public class dialogueSystem : MonoBehaviour
             dialogueClear();
     }
 
-    public void loadDialog(string characterFile){
+    public void loadDialog(TextAsset characterFile){
         xmld.characterFile = characterFile;
         xmld.fetch();
     }

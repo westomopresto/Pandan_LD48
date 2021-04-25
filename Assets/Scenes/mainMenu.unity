@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e1da302c6c4e347a86681d8763a8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterFile: assets/XML/denoise.xml
+  characterFile: {fileID: 0}
   Ourname: 
   Ourtexts: []
 --- !u!224 &3427122613516871564
@@ -848,7 +848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 5.5, y: 24.524353}
+  m_AnchoredPosition: {x: 5.5, y: 24.524414}
   m_SizeDelta: {x: 237, y: 37.048706}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6496867112372413985
@@ -1054,3 +1054,4 @@ MonoBehaviour:
   curPage: 0
   pages: []
   characterName: 
+  startingText: {fileID: 4900000, guid: 53daaf316d67b1f4bb5e918eba0c2293, type: 3}

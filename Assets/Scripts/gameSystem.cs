@@ -41,7 +41,7 @@ public class gameSystem : MonoBehaviour
             loadAdditiveLevel(scenes[0]);
             mainMenuObject.SetActive(false);
             dialogueObject.SetActive(true);
-            diagSys.loadDialog("assets/XML/denoise.xml");
+            diagSys.loadDialog(diagSys.startingText);
             diagSys.dialogueStart();
     }
 

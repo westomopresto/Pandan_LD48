@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Xml.Serialization;
 using System.IO;
+using System.Text;
 
 [XmlRoot("Char")]
 public class Char
@@ -21,11 +22,12 @@ public class XMLOp
         serializer.Serialize(writer.BaseStream, item);
         writer.Close();
     }
-    public static T Deserialize<T>(string path)
+    public static T Deserialize<T>(TextAsset tA)
 	{
 		XmlSerializer serializer = new XmlSerializer(typeof(T));
-		StreamReader reader = new StreamReader(path);
-		T deserialized = (T)serializer.Deserialize(reader.BaseStream);
+        MemoryStream mStrm= new MemoryStream( Encoding.UTF8.GetBytes( tA.text ) );
+		StreamReader reader = new StreamReader(mStrm); 
+        T deserialized = (T)serializer.Deserialize(mStrm);
 		reader.Close();
 		return deserialized;
 	}

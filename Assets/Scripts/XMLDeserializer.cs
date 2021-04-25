@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class XMLDeserializer : MonoBehaviour
 {
-    public string characterFile = "assets/XML/denoise.xml";
+    public TextAsset characterFile;
     public string Ourname;
     public string[] Ourtexts;
 
