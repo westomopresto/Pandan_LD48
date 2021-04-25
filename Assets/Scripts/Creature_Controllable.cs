@@ -6,6 +6,7 @@ public class Creature_Controllable: Creature
 {
     public override void Start() 
     {
+        bPlayer = true;
         base.Start();
     }
 

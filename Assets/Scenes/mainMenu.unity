@@ -1051,6 +1051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xmld: {fileID: 3105695780215263886}
   dialogBox: {fileID: 6804621671236543106}
+  nameBox: {fileID: 7323362811373312270}
   curPage: 0
   pages: []
   characterName: 

@@ -8,6 +8,7 @@ public class dialogueSystem : MonoBehaviour
 {
     public XMLDeserializer xmld;
     public Text dialogBox;
+    public Text nameBox;
     public int curPage = 0;
     public string[] pages;
     public string characterName;
@@ -61,6 +62,7 @@ public class dialogueSystem : MonoBehaviour
     void setText(string text)
     {
         dialogBox.text = text;
+        nameBox.text = characterName;
     }
 
     public void dialogueAdvance()

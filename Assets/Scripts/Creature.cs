@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
+    public bool bPlayer = false;
+    public gameSystem gS;
 
     private Transform thisTransform;
     private Vector3 spawnLocation;
@@ -38,6 +40,9 @@ public class Creature : MonoBehaviour
         mover = GetComponent<CharacterController>();
         audioData = GetComponent<AudioSource>();
         gameObject.layer = 2;
+        gS = GameObject.Find("GameSystem").GetComponent<gameSystem>();
+        if(bPlayer == true)
+            gS.player = gameObject;
     }
 
     // Update is called once per frame

@@ -11,7 +11,27 @@ public class gameSystem : MonoBehaviour
     public string[] scenes;
 
     public GameObject dialogueObject;
-    private dialogueSystem diagSys;
+    public dialogueSystem diagSys;
+    public GameObject player;
+
+    public int PsychicPower = 0;
+
+    public class Quest
+    {
+        public string Qname;
+        public int progress;
+        public int goal;
+        public bool complete;
+
+        public Quest(string newName, int newProgress, int newGoal, bool newComplete)
+        {
+            Qname = newName;
+            progress = newProgress;
+            goal = newGoal;
+            complete = newComplete;
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +41,33 @@ public class gameSystem : MonoBehaviour
         diagSys = dialogueObject.GetComponent<dialogueSystem>();
         dialogueSystem.onDialogEndEvent += onDialogEnd;
         dialogueSystem.onDialogStartEvent += onDialogStart;
+        QuestInitialize();
+    }
+    public List<Quest> AllQuests = new List<Quest>();
+    void QuestInitialize()
+    {
+        AllQuests.Add( new Quest("winona1", 0, 1, false));
+        AllQuests.Add( new Quest("allVillagers1", 0, 5, false));
+        AllQuests.Add( new Quest("winona2", 0, 1, false));
+        AllQuests.Add( new Quest("winona3", 0, 1, false));
+        foreach (var item in AllQuests)
+        {
+            Debug.Log(item.Qname);
+        }
+    }
+    public void updateQuest(string questName, int newProgress)
+    {
+        AllQuests.Find(i => i.Qname == questName);
+        Quest thisQuest = AllQuests.Find(delegate(Quest i) { return i.Qname == questName; });
+        if (thisQuest != null)
+        {
+            thisQuest.progress = newProgress;
+            if (thisQuest.progress >= thisQuest.goal)
+            {
+                thisQuest.complete = true;
+                Debug.Log(thisQuest.Qname+" completed!");
+            }
+        }     
     }
 
     // Update is called once per frame
@@ -40,7 +87,6 @@ public class gameSystem : MonoBehaviour
             changeState(gameState.intro);
             loadAdditiveLevel(scenes[0]);
             mainMenuObject.SetActive(false);
-            dialogueObject.SetActive(true);
             diagSys.loadDialog(diagSys.startingText);
             diagSys.dialogueStart();
     }
@@ -74,6 +120,7 @@ public class gameSystem : MonoBehaviour
     }
     void onDialogStart()
     {
+        dialogueObject.SetActive(true);
         changeState(gameState.dialogue);
     }
 }
