@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static gameSystem;
 
 public class villager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class villager : MonoBehaviour
 
     public bool questObjective = false;
     public string[] quests = {"winona1", "winona2", "winona3"};
-    private int curQid = 0;
+    public int curQid = 0;
     public bool hasNewQuest = false;
     public bool questTurnin = false;
 
@@ -29,13 +30,31 @@ public class villager : MonoBehaviour
         return tA;
     }
 
+    public Quest currentQuest;
+
     void checkQuests()
     {
+        if(quests.Length > 0)
+        {
+            currentQuest = gS.fetchQuest(quests[curQid]);
+            if(currentQuest != null){
+                if(currentQuest.complete == true){
+                    Debug.Log(currentQuest.Qname+" was completed");
+                    curQid += 1;
+                    if(curQid >= quests.Length)
+                    {
+                        curQid -=1;
+                        if(curQid < 0)
+                            curQid = 0;
+                    }     
+                }
+            }
+        }
         EMark.SetActive(hasNewQuest);
         qMark.SetActive(questTurnin);
     }
 
-    void Start() 
+    public virtual void Start() 
     {
         gS = GameObject.Find("GameSystem").GetComponent<gameSystem>();
         if(gS != null)
@@ -44,19 +63,18 @@ public class villager : MonoBehaviour
         checkQuests();
     }
 
-    public void Speak()
+    public virtual void Speak()
     {
-        loadVillagerDiag();
-        if(questObjective == true)
+        /* if(questObjective == true)
         {
-            if(curQid == 0)
+            if(curQid == 1)
                 giveQuestCredit(curQid, 1);
-                curQid = 1;
-                dialogState = 1;
-        }
+        } */
+        checkQuests();
+        loadVillagerDiag();
     }
 
-    void giveQuestCredit(int id, int amount)
+    public void giveQuestCredit(int id, int amount)
     {
         gS.updateQuest(quests[id], amount);
     }
@@ -83,11 +101,14 @@ public class villager : MonoBehaviour
 
     void FixedUpdate() 
     {
-        var dist = Vector3.Distance(player.transform.position, transform.position);
-        //Debug.Log(dist);
-        if(dist <= 4.75)
-            buttons.SetActive(true);
-        else
-            buttons.SetActive(false);
+        if(player != null)
+        {
+            var dist = Vector3.Distance(player.transform.position, transform.position);
+            //Debug.Log(dist);
+            if(dist <= 4.75)
+                buttons.SetActive(true);
+            else
+                buttons.SetActive(false);
+        }
     }
 }

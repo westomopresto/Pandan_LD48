@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930333d5aa221b64ab742e67216797ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bPlayer: 1
+  gS: {fileID: 0}
   input: {x: 0, y: 0}
   floorMasks:
     serializedVersion: 2

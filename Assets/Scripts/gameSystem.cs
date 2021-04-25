@@ -32,7 +32,6 @@ public class gameSystem : MonoBehaviour
         }
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +67,16 @@ public class gameSystem : MonoBehaviour
                 Debug.Log(thisQuest.Qname+" completed!");
             }
         }     
+    }
+    public Quest fetchQuest(string questName)
+    {
+        AllQuests.Find(i => i.Qname == questName);
+        Quest thisQuest = AllQuests.Find(delegate(Quest i) { return i.Qname == questName; });
+        if (thisQuest != null)
+        {
+            return thisQuest;
+        }    
+            return null; 
     }
 
     // Update is called once per frame

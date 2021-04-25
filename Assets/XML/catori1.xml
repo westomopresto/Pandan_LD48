@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Char xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <name>Catori</name>
+  <texts>
+    <text>I was fast asleep the night Denali was killed.</text>
+    <text>I woke up to screaming, and I saw the killer flee the scene from my window.</text>
+    <text>I don't remember much else..</text>
+  </texts>
+</Char>

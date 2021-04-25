@@ -675,6 +675,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1285248335, guid: d469f71bc7b995942b96615133c8c732, type: 3}
+      propertyPath: diagSys
+      value: 
+      objectReference: {fileID: 9017618147311752252}
+    - target: {fileID: 1285248335, guid: d469f71bc7b995942b96615133c8c732, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 1814616423}
