@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Char xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <name>Winona</name>
+  <texts>
+    <text>Denoise, tell me who did it!</text>
+    <text>((you can only accuse once))</text>
+  </texts>
+</Char>

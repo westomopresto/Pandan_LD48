@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Char xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <name>Winona</name>
+  <texts>
+    <text>Denoise you must help us..</text>
+    <text>My father, Denali, was murdered in his sleep. we found this knife next to his body.</text>
+    <text>Please come back to me when you've talked to ALL of the village.</text>
+  </texts>
+</Char>

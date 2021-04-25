@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class XMLDeserializer : MonoBehaviour
 {
-    public string name;
-    public string[] texts;
+    public string characterFile = "assets/XML/denoise.xml";
+    public string Ourname;
+    public string[] Ourtexts;
 
 //done init
-    private void Start()
+    public void fetch()
     {
-        Char a = XMLOp.Deserialize<Char>("assets/XML/denoise.xml");
-        texts = a.texts;
-        name = a.name;
+        Char a = XMLOp.Deserialize<Char>(characterFile);
+        Ourtexts = a.texts;
+        Ourname = a.name;
     }
 }

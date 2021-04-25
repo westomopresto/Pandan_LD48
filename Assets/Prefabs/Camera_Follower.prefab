@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   cameraRotationRate: 180
-  cameraDistance: 10
+  cameraDistance: 0
   cameraHeightOffset: 0.9
   tiltLimit: 5
   tiltLimitEnd: 15
@@ -60,7 +60,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4520019604046649439}
   - component: {fileID: 4520019604046649438}
-  - component: {fileID: 4520019604046649437}
   - component: {fileID: 4520019604046649432}
   m_Layer: 0
   m_Name: Main Camera
@@ -126,14 +125,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4520019604046649437
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4520019604046649436}
-  m_Enabled: 1
 --- !u!114 &4520019604046649432
 MonoBehaviour:
   m_ObjectHideFlags: 0

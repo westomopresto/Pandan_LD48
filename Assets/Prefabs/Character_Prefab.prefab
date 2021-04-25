@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5130986272607492805}
   - component: {fileID: 5130986272607492810}
   - component: {fileID: 5130986272607492811}
+  - component: {fileID: 5130986271756711475}
   m_Layer: 0
   m_Name: Character_Prefab
   m_TagString: Untagged
@@ -197,6 +198,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!81 &5130986271756711475
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5130986272607492802}
+  m_Enabled: 1
 --- !u!1 &5130986272845294720
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +290,10 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: 90d2eb0f96a153b449bd7032a19715bf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 2100000, guid: 77c9bc66d55166641bdb7fb04b2e4abe, type: 2}
+    - target: {fileID: -1461304994638716399, guid: 90d2eb0f96a153b449bd7032a19715bf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 2100000, guid: 86390c863d61d124b94de77921e3c19d, type: 2}
     - target: {fileID: -804731622281664130, guid: 90d2eb0f96a153b449bd7032a19715bf, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -294,6 +307,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mouse_01
       objectReference: {fileID: 0}
+    - target: {fileID: 8521902485874960664, guid: 90d2eb0f96a153b449bd7032a19715bf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86390c863d61d124b94de77921e3c19d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90d2eb0f96a153b449bd7032a19715bf, type: 3}
 --- !u!4 &4665260449864581888 stripped

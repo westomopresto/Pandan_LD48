@@ -6,17 +6,21 @@ using UnityEngine.SceneManagement;
 public class gameSystem : MonoBehaviour
 {
     public GameObject mainMenuObject;
-    public enum gameState {mainmenu, pause, dialogue, village, brain, end};
+    public enum gameState {mainmenu, intro, pause, dialogue, village, brain, end};
     public gameState curGameState;
     public string[] scenes;
 
     public GameObject dialogueObject;
+    private dialogueSystem diagSys;
 
     // Start is called before the first frame update
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         uiCheck();
+        diagSys = dialogueObject.GetComponent<dialogueSystem>();
+        dialogueSystem.onDialogEndEvent += onDialogEnd;
+        dialogueSystem.onDialogStartEvent += onDialogStart;
     }
 
     // Update is called once per frame
@@ -25,11 +29,20 @@ public class gameSystem : MonoBehaviour
         
     }
 
+    void changeState(gameState gs)
+    {
+        curGameState = gs;
+    }
+
     public void startGame()
     {
         if(curGameState == gameState.mainmenu)
+            changeState(gameState.intro);
             loadAdditiveLevel(scenes[0]);
             mainMenuObject.SetActive(false);
+            dialogueObject.SetActive(true);
+            diagSys.loadDialog("assets/XML/denoise.xml");
+            diagSys.dialogueStart();
     }
 
     public void loadAdditiveLevel(string level)
@@ -52,5 +65,15 @@ public class gameSystem : MonoBehaviour
                 break;
         }
 
+    }
+
+    void onDialogEnd()
+    {
+        dialogueObject.SetActive(false);
+        changeState(gameState.village);
+    }
+    void onDialogStart()
+    {
+        changeState(gameState.dialogue);
     }
 }

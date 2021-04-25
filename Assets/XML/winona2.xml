@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Char xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <name>Winona</name>
+  <texts>
+    <text>Now that you've spoken to the villagers, use your powers to read their minds.</text>
+    <text>Go deeper into their psyche, and reveal the secrets within.</text>
+    <text>When you've made your decision, come back to me.</text>
+  </texts>
+</Char>

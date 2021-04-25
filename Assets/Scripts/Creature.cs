@@ -53,9 +53,9 @@ public class Creature : MonoBehaviour
         var vMag = velocityXZ.magnitude;
         vMag = Mathf.Clamp(vMag, 0.0f, 10.0f);
         //animator.SetFloat("walkSpeed", vMag);
-        Vector3 pos = transform.position;
+        /* Vector3 pos = transform.position;
         pos.z = 0;
-        transform.position = pos;
+        transform.position = pos; */
     }
 
     private Vector3 camF;
